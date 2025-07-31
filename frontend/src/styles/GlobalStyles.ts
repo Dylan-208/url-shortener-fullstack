@@ -127,6 +127,7 @@ export const Response = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
   }
   input {
     border-radius: 20px;
@@ -137,8 +138,9 @@ export const Response = styled.div`
     z-index: 1;
     position: relative;
     width: 100%;
-    font-size: 20px;
+    font-size: 17px;
     color: blue;
+    flex: 2;
   }
 
   button {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { Content, Cover, Response } from "./styles/GlobalStyles";
 import axios from "axios";
