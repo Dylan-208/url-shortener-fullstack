@@ -1,5 +1,5 @@
 import UrlRepository from "../repositories/UrlRepository";
-import { nanoid } from "nanoid";
+import { v4 as uuidv4 } from "uuid";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -15,8 +15,9 @@ class UrlService {
       return newUrl;
     }
 
-    const slug: string = nanoid(6);
+    const slug: string = uuidv4();
     const newUrlData = await this._urlRepository.create(url, slug);
+    console.log(slug);
 
     const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${newUrlData.slug}`;
     return newUrl;

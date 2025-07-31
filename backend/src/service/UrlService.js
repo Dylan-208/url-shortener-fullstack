@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const nanoid_1 = require("nanoid");
+const uuid_1 = require("uuid");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 class UrlService {
@@ -26,8 +26,9 @@ class UrlService {
                 const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${verifyUrl.slug}`;
                 return newUrl;
             }
-            const slug = (0, nanoid_1.nanoid)(6);
-            const newUrlData = yield this._urlRepository.create(url, slug);
+            const slug = (0, uuid_1.v4)();
+            slug.split("-");
+            const newUrlData = yield this._urlRepository.create(url, slug[0]);
             const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${newUrlData.slug}`;
             return newUrl;
         });
