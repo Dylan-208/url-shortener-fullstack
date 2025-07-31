@@ -42,6 +42,7 @@ export const Content = styled.div`
     height: 40%;
     font-size: 40px;
     gap: 10px;
+    flex-wrap: wrap;
     img {
       height: auto;
       width: 100px;
@@ -59,12 +60,22 @@ export const Content = styled.div`
     font-family: "Roboto";
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
 
+    @media (max-width: 720px) {
+      max-height: 300px;
+    }
+
     label {
       display: flex;
       align-items: center;
       height: 60px;
       margin-left: 20px;
       font-size: 20px;
+      flex-wrap: wrap;
+      @media (max-width: 720px) {
+        font-size: 16px;
+        justify-content: center;
+        margin-left: 0;
+      }
     }
 
     div {
@@ -108,6 +119,12 @@ export const Content = styled.div`
           font-size: 20px;
           font-family: "Roboto";
           cursor: pointer;
+
+          @media (max-width: 720px) {
+            font-weight: 400;
+            width: 90px;
+            font-size: 16px;
+          }
         }
       }
     }
@@ -123,14 +140,50 @@ export const Content = styled.div`
 export const Response = styled.div`
   display: flex;
 
+  span {
+    display: flex;
+    padding: 10px 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: end;
+    height: 50px;
+    width: 70px;
+    background-color: #292929;
+    color: white;
+    position: absolute;
+    border-radius: 10px;
+    right: 60px;
+    transform: translateY(125%);
+    z-index: 3;
+    animation: fadeInOut ease-out 3s infinite alternate;
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      right: 10px;
+    }
+  }
+
   h2 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
+
+    @media (max-width: 720px) {
+      font-size: 15px;
+      flex-wrap: wrap;
+      display: none;
+    }
   }
   input {
-    border-radius: 20px;
+    border-radius: 40px;
     padding: 0px 20px;
     border: 2px solid #ababb8ff;
     background-color: #f8f8f8;
@@ -141,6 +194,13 @@ export const Response = styled.div`
     font-size: 17px;
     color: blue;
     flex: 2;
+    overflow: hidden;
+
+    @media (max-width: 720px) {
+      font-size: 20px;
+      flex: 3;
+      font-size: 15px;
+    }
   }
 
   button {
@@ -158,5 +218,13 @@ export const Response = styled.div`
     font-size: 20px;
     font-family: "Roboto";
     cursor: pointer;
+
+    @media (max-width: 720px) {
+      width: 90px;
+      height: 72px;
+      flex: 3;
+      font-size: 16px;
+      word-break: break-all;
+    }
   }
 `;

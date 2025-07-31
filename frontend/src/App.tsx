@@ -6,7 +6,8 @@ import axios from "axios";
 function App() {
   const [url, setUrl] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
-  const [response, setResponse] = useState<string | null>(null);
+  const [response, setResponse] = useState<string>("teste");
+  const [copy, setCopy] = useState<boolean>(false);
 
   async function shortUrlAPI() {
     try {
@@ -26,6 +27,14 @@ function App() {
       setError(err.response.data.Error);
       return;
     }
+  }
+
+  function copyResponse() {
+    setCopy(!copy);
+    navigator.clipboard.writeText(response);
+    setTimeout(() => {
+      setCopy(false);
+    }, 3000);
   }
 
   return (
@@ -68,9 +77,8 @@ function App() {
                   value={response}
                   onChange={(e) => setUrl(e.target.value)}
                 />
-                <button onClick={() => navigator.clipboard.writeText(response)}>
-                  Copiar
-                </button>
+                <button onClick={() => copyResponse()}>Copiar</button>
+                {copy && <span>url copiada</span>}
               </Response>
             )}
           </div>
