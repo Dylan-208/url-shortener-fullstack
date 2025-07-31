@@ -13,14 +13,16 @@ class UrlService {
     if (verifyUrl) {
       const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${verifyUrl.slug}`;
       return newUrl;
+    } else {
+      const slug: string = uuidv4();
+      const newUrlData = await this._urlRepository.create(
+        url,
+        slug.slice(0, 5)
+      );
+
+      const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${newUrlData.slug}`;
+      return newUrl;
     }
-
-    const slug: string = uuidv4();
-    const newUrlData = await this._urlRepository.create(url, slug);
-    console.log(slug);
-
-    const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${newUrlData.slug}`;
-    return newUrl;
   }
 
   async get(slug: string) {

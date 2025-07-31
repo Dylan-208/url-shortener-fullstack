@@ -26,11 +26,12 @@ class UrlService {
                 const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${verifyUrl.slug}`;
                 return newUrl;
             }
-            const slug = (0, uuid_1.v4)();
-            slug.split("-");
-            const newUrlData = yield this._urlRepository.create(url, slug[0]);
-            const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${newUrlData.slug}`;
-            return newUrl;
+            else {
+                const slug = (0, uuid_1.v4)();
+                const newUrlData = yield this._urlRepository.create(url, slug.slice(0, 5));
+                const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${newUrlData.slug}`;
+                return newUrl;
+            }
         });
     }
     get(slug) {
