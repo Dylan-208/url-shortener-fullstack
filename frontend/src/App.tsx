@@ -6,7 +6,7 @@ import axios from "axios";
 function App() {
   const [url, setUrl] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
-  const [response, setResponse] = useState<string>("teste");
+  const [response, setResponse] = useState<string>("");
   const [copy, setCopy] = useState<boolean>(false);
 
   async function shortUrlAPI() {
