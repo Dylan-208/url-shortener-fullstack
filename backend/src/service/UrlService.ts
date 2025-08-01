@@ -20,7 +20,7 @@ class UrlService {
         slug.slice(0, 5)
       );
 
-      const newUrl = `${process.env.URL_LOCAL}:${process.env.PORT}/${newUrlData.slug}`;
+      const newUrl = `${process.env.URL_LOCAL}/${newUrlData.slug}`;
       return newUrl;
     }
   }
